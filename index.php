@@ -1,3 +1,10 @@
+<?php
+
+    require_once("globals.php");
+    require_once("db.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,16 +12,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieStar</title>
-    
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/e2f70584a0.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="img/moviestar.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS -->
+    <link rel="shortcut icon" href="<?= $BASE_URL ?>img/moviestar.ico" type="image/x-icon">
+    <link rel="stylesheet" href="<?= $BASE_URL ?>css/style.css">
 </head>
 <body>
-    <h1>Olá php</h1>
-    <i class="fa-solid fa-file"></i>
+    <header>
+        <nav id="main-navbar" class="navbar navbar-expand-lg">
+            <a href="<?= $BASE_URL ?>" class="navbar-brand">
+                <img src="<?= $BASE_URL ?>img/logo.svg" alt="MovieStar logo" id="logo">
+                <span id="moviestar-title">MovieStar</span>
+            </a>
+            <button 
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar"
+                aria-controls="navbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <form action="" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
+                <input type="text" name="q" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar filmes" aria-label="Search">
+                <button type="submit" class="btn my-2 my-sm-0">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="<?= $BASE_URL ?>auth.php" class="nav-link">Entrar / Cadastrar</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="main-container" class="container-fluid">
+        <p>CORPO SITE</p>
+    </div>
+    <footer id="footer">
+        <div class="social-container">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="footer-links-container">
+            <ul>
+                <li>
+                    <a href="#">Adicionar Filme</a>
+                </li>
+                <li>
+                    <a href="#">Adicionar crítica</a>
+                </li>
+                <li>
+                    <a href="#">Entrar / Registrar</a>
+                </li>
+            </ul>
+        </div>
+        <p>&copy; 2022 Gabriel Fucci</p>
+    </footer>
 </body>
 </html>
