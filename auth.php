@@ -4,7 +4,7 @@
 
 ?>
     <div id="main-container" class="container-fluid">
-        <p>CORPO SITE</p>
+        <h1>AUTENTICAÇÃO</h1>
     </div>
 <?php
 
