@@ -58,7 +58,7 @@
         <p>CORPO SITE</p>
     </div>
     <footer id="footer">
-        <div class="social-container">
+        <div id="social-container">
             <ul>
                 <li>
                     <a href="#">
@@ -90,7 +90,7 @@
                 </li>
             </ul>
         </div>
-        <p>&copy; 2022 Gabriel Fucci</p>
+        <a id="copyright" href="https://gabrielfucci-portfolio.vercel.app/" rel="noopener noreferrer" target="_blank">&copy; 2022 Gabriel Fucci</a>
     </footer>
 </body>
 </html>
