@@ -35,8 +35,8 @@
                 </div>
                 <div class="col-md-4" id="register-container">
                     <h2>Criar Conta</h2>
-                    <form action="" method="POST">
-                        <input type="hidden" name="type" value="login">
+                    <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
+                        <input type="hidden" name="type" value="register">
                         <div class="form-group">
                             <label for="name">Nome:</label>
                             <input 
