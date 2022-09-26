@@ -2,8 +2,16 @@
 
     require_once("globals.php");
     require_once("db.php");
+    require_once("models/Message.php");
 
-    $printMsg = [];
+    $message = new Message($BASE_URL);
+
+    $printMsg = $message->getMessage();
+
+    //limpar mensagem
+    if(!empty($printMsg["msg"])) {
+        $message->clearMessage();
+    }
 ?>
 
 <!DOCTYPE html>

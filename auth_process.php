@@ -3,7 +3,10 @@
     require_once("db.php");
     require_once("globals.php");
     require_once("models/User.php");
+    require_once("models/Message.php");
     require_once("dao/UserDAO.php");
+    
+    $message = new Message($BASE_URL);
 
     //resgatando o tipo de formulário
     $type = filter_input(INPUT_POST, "type");
@@ -24,6 +27,7 @@
         } else {
 
             //Enviar uma msg de erro, de dados faltantes
+            $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
 
         }
 
