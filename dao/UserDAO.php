@@ -26,9 +26,11 @@
             $user->email = $data["email"];
             $user->password = $data["password"];
             $user->image = $data["image"];
-            $user->bio = $data["bio"];
+            if (isset($_POST["bio"])) {
+                $user->bio = $data["bio"];
+            }
             $user->token = $data["token"];
-
+      
             return $user;
         }
 
@@ -59,6 +61,27 @@
 
         public function verifyToken($protectedCard = false) {
 
+            if (!empty($_SESSION["token"])) {
+
+                //pega o token da session
+                $token = $_SESSION["token"];
+
+                $user = $this->findByToken($token);
+
+                if ($user) {
+
+                    return $user;
+                } else if ($protectedCard) {
+
+                    //redireciona usuário não autenticado
+                    $this->message->setMessage("Faça a autenticação para usar o sistema", "error");
+                }
+
+            } else if ($protectedCard) {
+
+                //redireciona usuário não autenticado
+                $this->message->setMessage("Faça a autenticação para usar o sistema", "error");
+            }
         }
 
         public function setTokenToSession($token, $redirect = true) {
@@ -83,7 +106,7 @@
 
                 if ($stmt->rowCount() > 0) {
 
-                    $data = $stmt->fetch();
+                    $data = $stmt->fetchAll();
                     $user = $this->buildUser($data);
 
                     return $user;
@@ -102,6 +125,34 @@
 
         public function findByToken($token) {
 
+            if ($token != "") {
+
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+                $stmt->bindParam(":token", $token);
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+
+                    $data = $stmt->fetch();
+                    $user = $this->buildUser($data);
+
+                    return $user;
+
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        public function destroyToken() {
+          
+            //remove o token da session
+            $_SESSION["token"] = "";
+
+            //redirect home
+            $this->message->setMessage("Volte Sempre!", "success");
         }
 
         public function changePassword(User $user) {
