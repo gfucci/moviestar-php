@@ -116,7 +116,8 @@
 }
 
 #login-container .card-btn,
-#register-container .card-btn {
+#register-container .card-btn,
+.btn.card-btn {
     color: #000;
     background-color: #F5C518;
     border: 2px solid #F5C518;
@@ -125,7 +126,8 @@
 }
 
 #login-container .card-btn:hover,
-#register-container .card-btn:hover {
+#register-container .card-btn:hover,
+.btn.card-btn:hover {
     background-color: transparent;
     color: #F5C518;
     border-color: #F5C518;
@@ -137,6 +139,29 @@
 
 .form-group label {
     margin-bottom: 8px;
+}
+
+/* EDIT PROFILE */
+#profile-image-container {
+    width: 150px;
+    height: 150px;
+    border: 6px solid #F5C518;
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 15px auto;
+}
+
+.page-description {
+    color: #999;
+}
+
+#bio {
+    max-width: 400px;
+}
+
+.form-control.disabled {
+    background-color: #AAA;
 }
 
 /* FOOTER */
