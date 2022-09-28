@@ -55,8 +55,33 @@
             }
         }
 
-        public function update(User $user) {
+        public function update(User $user, $redirect = true) {
 
+            $stmt = $this->conn->prepare("UPDATE users SET
+                name = :name,
+                lastname = :lastname,
+                email = :email,
+                image = :image,
+                bio = :bio,
+                token = :token
+                WHERE id = :id
+            ");
+
+            $stmt->bindParam(":name", $user->name);
+            $stmt->bindParam(":lastname", $user->lastname);
+            $stmt->bindParam(":email", $user->email);
+            $stmt->bindParam(":image", $user->image);
+            $stmt->bindParam(":bio", $user->bio);
+            $stmt->bindParam(":token", $user->token);
+            $stmt->bindParam(":id", $user->id);
+
+            $stmt->execute();
+
+            if ($redirect) {
+
+                //redirecionando para o perfil do usuario
+                $this->message->setMessage("Dados atualizados com sucesso", "success", "editProfile.php");
+            }
         }
 
         public function verifyToken($protectedCard = false) {
@@ -96,6 +121,37 @@
             }
         }
 
+        public function authenticateUser($email, $password) {
+
+            //procura o e-mail que chegou do formulário no banco
+            $user = $this->findByEmail($email);
+
+            if ($user) {
+                
+                //verifca se as hashs das passowrds batem
+                if (password_verify($password, $user->password)) {
+
+                    //gerar token e inserir na session
+                    $token = $user->generateToken();
+                    $this->setTokenToSession($token, false);
+
+                    //atualiza o token do usuário
+                    $user->token = $token;
+                    $this->update($user, false);
+
+                    return true;
+
+                } else {
+
+                    return false;
+                }
+
+            } else {
+
+                return false;
+            }
+        }
+
         public function findByEmail($email) {
 
             if ($email != "") {
@@ -106,15 +162,18 @@
 
                 if ($stmt->rowCount() > 0) {
 
-                    $data = $stmt->fetchAll();
+                    $data = $stmt->fetch();
                     $user = $this->buildUser($data);
 
                     return $user;
 
                 } else {
+
                     return false;
                 }
+
             } else {
+
                 return false;
             }
         }

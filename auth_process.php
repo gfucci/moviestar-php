@@ -31,11 +31,11 @@
                 //verifica se já existe o email cadastrado no sistema
                 if ($userDao->findByEmail($email) === false) {
 
-                    $user = new User;
+                    $user = new User();
 
                     //criar token e hash da senha
                     $userToken = $user->generateToken();
-                    $finalPassword = $user->generateToken($password);
+                    $finalPassword = $user->generatePassword($password);
 
                     $user->name = $name;
                     $user->lastname = $lastname;
@@ -68,4 +68,23 @@
 
     } else if ($type === "login") {
 
+        $email = filter_input(INPUT_POST, "email");
+        $password = filter_input(INPUT_POST, "password");
+
+        //Tenta autenticar usuário
+        if ($userDao->authenticateUser($email, $password)) {
+
+            $message->setMessage("Bem vindo", "success", "editProfile.php");
+            
+        } else {
+
+            //Enviar uma msg de erro, dados errados
+            $message->setMessage("Usuário ou/e senha incorretos. Tente novamente", "error", "back");
+            
+        }
+
+    } else {
+
+        //Enviar uma msg de erro, dados maliciosos
+        $message->setMessage("Informações inválidas", "error");
     }
