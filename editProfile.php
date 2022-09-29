@@ -32,7 +32,9 @@
                                 name="name" 
                                 id="name" 
                                 class="form-control"
-                                placeholder="Digie te o seu nome <?= $userData->name ?>"
+                                placeholder="Digite o seu nome <?= $userData->name ?>"
+                                value="<?= $userData->name ?>"
+                                required
                             >
                         </div>
                         <div class="form-group">
@@ -42,7 +44,9 @@
                                 name="lastname" 
                                 id="lastname" 
                                 class="form-control"
-                                placeholder="Digie te o seu nome <?= $userData->lastname ?>"
+                                placeholder="Digite o seu sobrenome <?= $userData->lastname ?>"
+                                value="<?= $userData->lastname ?>"
+                                required
                             >
                         </div>
                         <div class="form-group">
@@ -54,6 +58,7 @@
                                 class="form-control disabled"
                                 readonly
                                 placeholder="<?= $userData->email ?>"
+                                value="<?= $userData->email ?>"
                             >
                         </div>
                         <input type="submit" class="btn card-btn" value="Alterar">
@@ -69,7 +74,6 @@
                                 type="file" 
                                 name="image"
                                 class="form-control-file"
-                                id="image"
                             >
                         </div>
                         <div class="form-group">

@@ -26,9 +26,7 @@
             $user->email = $data["email"];
             $user->password = $data["password"];
             $user->image = $data["image"];
-            if (isset($_POST["bio"])) {
-                $user->bio = $data["bio"];
-            }
+            $user->bio = $data["bio"];
             $user->token = $data["token"];
       
             return $user;
