@@ -64,7 +64,7 @@
                 <ul class="navbar-nav">
                     <?php if ($userData): ?>
                         <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>newmovie.php.php" class="nav-link">
+                            <a href="<?= $BASE_URL ?>newMovie.php" class="nav-link">
                                 <i class="far fa-plus-square"></i>
                                 Incluir Filme
                             </a>

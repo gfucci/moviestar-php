@@ -18,61 +18,108 @@
     //muda dados do usuario
     if ($type === "update") {
 
-        //resgatando usuario no banco
-        $userData = $userDao->verifyToken(false);
+      //resgatando usuario no banco
+      $userData = $userDao->verifyToken(false);
 
-        $name = filter_input(INPUT_POST, "name");
-        $lastname = filter_input(INPUT_POST, "lastname");
-        $email = filter_input(INPUT_POST, "email");
-        $bio = filter_input(INPUT_POST, "bio");
+      $name = filter_input(INPUT_POST, "name");
+      $lastname = filter_input(INPUT_POST, "lastname");
+      $email = filter_input(INPUT_POST, "email");
+      $bio = filter_input(INPUT_POST, "bio");
 
-        $userData->name = $name;
-        $userData->lastname = $lastname;
-        $userData->email = $email;
-        $userData->bio = $bio;
+      $userData->name = $name;
+      $userData->lastname = $lastname;
+      $userData->email = $email;
+      $userData->bio = $bio;
 
-    // Upload da imagem
-    if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
-      
+      //upload de imagem
+
+      if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+
+        /*print_r($_FILES["image"]); 
+        echo "<br> <br>";
+        print_r($_FILES["image"]["tmp_name"]);
+        exit;*/
+
         $image = $_FILES["image"];
         $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
         $jpgArray = ["image/jpeg", "image/jpg"];
-  
-        // Checagem de tipo de imagem
-        if(in_array($image["type"], $imageTypes)) {
-  
-          // Checar se jpg
-          if(in_array($image["type"], $jpgArray)) {
-  
-            $imageFile = imagecreatefromjpeg($image["tmp_name"]);
-  
-          // Imagem é png
-          } else {
-  
-            $imageFile = imagecreatefrompng($image["tmp_name"]);
-  
-          }
-  
-          $imageName = $user->imageGenerateName();
-  
-          imagepng($imageFile, "./img/users/" . $imageName, 100);
-  
-          $userData->image = $imageName;
-  
-        } else {
-  
-          $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "back");
-  
-        }
-  
-      }
 
-        $userDao->update($userData, true);
+        /*print_r($image); 
+        echo "<br> <br>";
+        print_r($imageTypes);
+        //exit;
+        echo "<br> <br>";*/
+
+        /*echo in_array($image["type"], $imageTypes);
+        exit;*/
+
+        if(in_array($image["type"], $imageTypes)) {
+
+          /*print_r($image["type"]); 
+          echo "<br> <br>";
+          print_r($imageTypes);
+          exit;*/
+
+          /*print_r($image); 
+          echo "<br> <br>";
+          print_r($jpgArray);
+          exit;*/
+
+          if (in_array($image["type"], $jpgArray)) {
+
+            /*print_r($image["type"]); 
+            echo "<br> <br>";
+            print_r($jpgArray);
+            echo "<br> <br>";
+            echo $image["tmp_name"];
+            exit;*/
+
+            $imageFile = imagecreate($image["tmp_name"]);
+
+          } else {
+
+            $imageFile = imagecreatefrompng($image["tmp_name"]);
+          }
+
+        } else {
+
+          $message->setMessage("Tipo inválido", "error", "back");
+          die;
+        }
+
+        $imageName = $user->imageGenerateName();
+
+        imagejpeg($imageFile, "./img/users/" . $imageName, 100);
+
+        $userData->image = $imageName;
+
+      } 
+
+      $userDao->update($userData, true);
 
     //muda a senha do usuario
     } else if ($type === "changepassword") {
 
+      $userData = $userDao->verifyToken(false);
+
+      $password = filter_input(INPUT_POST, "password");
+      $confirmPassword = filter_input(INPUT_POST, "confirmpassword");
+
+      if ($password == $confirmPassword) {
+
+        $updatePassword = $userData->generatePassword($password);
+
+        $userData->password = $updatePassword;
+
+        $userDao->changePassword($userData);
+
+      } else {
+
+        $message->setMessage("As senhas não são iguais! Tente novamente", "error", "back");
+        die;
+      }
+
     } else {
 
-        $message->setMessage("Informações inválidas", "error");
+      $message->setMessage("Informações inválidas", "error");
     }
