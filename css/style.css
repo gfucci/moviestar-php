@@ -242,6 +242,15 @@
     background-color: #AAA;
 }
 
+#change-password-container {
+    margin-top: 30px;
+}
+
+.edit-profile-page .card-btn,
+#add-movie-container .card-btn {
+    width: auto;
+}
+
 /* NEW MOVIE */
 .new-movie-container {
     text-align: center;
@@ -267,8 +276,84 @@
     padding-top: 7px;
 }
 
-/* HOME */
+/* DASHBOARD */
+#add-movie-container {
+    text-align: right;
+}
 
+#movies-dashboard .table {
+    color: #FFF;
+}
+
+#movies-dashboard .table th {
+    border-top: none;
+}
+
+#movies-dashboard .table tr {
+    padding: 15px 0;
+}
+
+.table-movie-title {
+    color: #FFF;
+    font-weight: bold;
+    transition: .5s;
+    text-decoration: none;
+}
+
+.table-movie-title:hover {
+    color: #F5C518;
+}
+
+.actions-column {
+    max-width: 80px;
+    text-align: center;
+}
+
+.actions-colum  {
+    max-width: 80px;
+    text-align: center;
+}
+
+.actions-colum form {
+    display: inline-block;
+}
+
+tbody td {
+    border-bottom: none
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: .5s;
+    border: none;
+    display: inline-block;
+}
+
+.edit-btn {
+    background-color: #0DCAF0;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    background-color: transparent;
+    color: #0DCAF0;
+}
+
+.delete-btn {
+    background-color: #DC3545;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.delete-btn:hover {
+    background-color: transparent;
+    color: #DC3545;
+}
 
 /* FOOTER */
 #footer {
