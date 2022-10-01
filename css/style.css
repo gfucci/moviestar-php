@@ -95,6 +95,84 @@
     padding: 40px;
 }
 
+.section-title {
+    font-size: 24px;
+    border-left: 4px solid #F5C518;
+    padding-left: 12px;
+    margin-top: 20px;
+}
+
+.section-description {
+    color: #CCC;
+    font-size: 18px;
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.movies-card {
+    background-color: #1A1A1A;
+    width: 18%;
+    margin-bottom: 30px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.movies-card .card-img-top {
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-title {
+    height: 3rem;
+
+}
+
+.card-title a {
+    font-size: 16px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+.fas.fa-star {
+    color: #F5C518;
+}
+
+.rating {
+    color: #CCC;
+}
+
+.rate-btn {
+    margin-bottom: 15px;
+    color: #5799Ef;
+    background-color: #333;
+    border-color: #333;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn.rate-btn:hover {
+    background-color: #444;
+    border-color: #444;
+    color: #5799Ef;
+}
+
+.empty-list {
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    font-weight: bold;
+}
+
 /* LOGIN / REGISTER */
 #auth-row {
     justify-content: space-evenly;
@@ -188,6 +266,9 @@
     margin: 0 auto;
     padding-top: 7px;
 }
+
+/* HOME */
+
 
 /* FOOTER */
 #footer {

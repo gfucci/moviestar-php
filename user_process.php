@@ -74,7 +74,7 @@
             echo $image["tmp_name"];
             exit;*/
 
-            $imageFile = imagecreate($image["tmp_name"]);
+            $imageFile = imagecreatefromjpeg($image["tmp_name"]);
 
           } else {
 
@@ -95,6 +95,7 @@
 
       } 
 
+      //print_r($_POST); exit;
       $userDao->update($userData, true);
 
     //muda a senha do usuario
