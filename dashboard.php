@@ -39,7 +39,7 @@
                             <td scope="row"><?= $movie->id ?></td>
                             <td>
                                 <a 
-                                    href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" 
+                                    href="<?= $BASE_URL ?>individualMovie.php?id=<?= $movie->id ?>" 
                                     class="table-movie-title"
                                 >
                                     <?= $movie->title ?>
