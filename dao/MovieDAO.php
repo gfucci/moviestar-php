@@ -123,7 +123,7 @@
 
                 $movieArray = $stmt->fetch();
 
-                $movie[] = $this->buildMovie($movieArray);
+                $movie = $this->buildMovie($movieArray);
 
                 return $movie;
 
