@@ -83,6 +83,29 @@
 
 
 
+    } else if ($type === "delete") {
+
+        $id = filter_input(INPUT_POST, "id");
+
+        $movie = $movieDao->findById($id);
+
+        if ($movie) {
+
+            if ($movie->users_id === $userData->id) {
+
+                $movieDao->destroy($movie->id);
+
+            } else {
+
+                $message->setMessage("Algo deu errado", "error");
+            }
+            
+
+        } else {
+
+            $message->setMessage("Algo deu errado", "error");
+        }
+
     } else {
 
         $message->setMessage("Algo deu errado", "error");

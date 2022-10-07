@@ -15,7 +15,7 @@
             <span class="rating">8</span>
         </p>
         <h5 class="card-title">
-            <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
+            <a href="<?= $BASE_URL ?>individualMovie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
         </h5>
         <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="btn btn-primary rate-btn">Avaliar</a>
         <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="btn btn-primary card-btn">Conhecer</a>

@@ -55,9 +55,9 @@
                                 >
                                     <i class="far fa-edit"></i> Editar
                                 </a>
-                                <form action="<?= $BASE_URL ?>movie_process.php" class="button-form">
+                                <form action="<?= $BASE_URL ?>movie_process.php" class="button-form" method="POST">
                                     <input type="hidden" name="type" value="delete">
-                                    <input type="hidden" name="type" value="<?= $movie->id ?>">
+                                    <input type="hidden" name="id" value="<?= $movie->id ?>">
                                     <button type="submit" class="delete-btn">
                                         <i class="fas fa-times"></i> Deletar
                                     </button>
