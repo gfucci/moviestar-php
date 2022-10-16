@@ -43,15 +43,7 @@
                 <img src="<?= $BASE_URL ?>img/logo.svg" alt="MovieStar logo" id="logo">
                 <span id="moviestar-title">MovieStar</span>
             </a>
-            <button 
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbar"
-                aria-controls="navbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <form action="<?= $BASE_URL ?>search.php" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
@@ -61,7 +53,7 @@
                 </button>
             </form>
             <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php if ($userData): ?>
                         <li class="nav-item">
                             <a href="<?= $BASE_URL ?>newMovie.php" class="nav-link">
