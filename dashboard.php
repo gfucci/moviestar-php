@@ -46,7 +46,7 @@
                                 </a>
                             </td>
                             <td>
-                                <i class="fas fa-star"> 9</i>
+                                <i class="fas fa-star"> <?= $movie->rating ?></i>
                             </td>
                             <td class="actions-colum">
                                 <a 
