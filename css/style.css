@@ -461,6 +461,17 @@ tbody td {
     color: #DC3545;
 }
 
+/* SEARCH */
+#search-title {
+    font-size: 40px;
+}
+
+#search-result,
+.back-link {
+    color: #F5C518;
+    text-decoration: none;
+}
+
 /* FOOTER */
 #footer {
     background-color: #121212;
